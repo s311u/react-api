@@ -20,18 +20,20 @@ const [char, setChar] = useState(0);
       const chars = await apiChar.json();
       const char = chars.docs[0];
       setChar(char.name);
-     let vari = "Boromir";
+     let vari = "Boro";
       const char1= await fetch('https://the-one-api.dev/v2/character', { headers : login });
       const char2 = await char1.json();
-      let id=""
-      for (let i = 0; i < char2.length; i++) {
-          if (char2.docs.name.includes(vari.toLower())) {
-             id = char2.docs._id 
+      let testId=""
+      for (let i = 0; i < char2.docs.length; i++) {
+          if (char2.docs[i].name.includes(vari.toLowerCase())) {
+            testId = char2.docs[i]._id 
+            console.log(testId)
           } 
       }
-      const specialQuoteRaw = await fetch('https://the-one-api.dev/v2/character/' + id + '/quote', { headers : login });
+      const specialQuoteRaw = await fetch('https://the-one-api.dev/v2/character/5cd99d4bde30eff6ebccfbbe/quote', { headers : login });//5cd99d4bde30eff6ebccfbbe
       const specialQuote = await specialQuoteRaw.json();
-      const quote2 = specialQuote.docs[Math.floor(Math.random() * quotes.docs.length)];
+      console.log(specialQuote.docs)
+      const quote2 = specialQuote.docs[Math.floor(Math.random() * specialQuote.docs.length)]/* .docs[Math.floor(Math.random() * specialQuote.docs.length)] */;
       console.log(quote2);
       //sorry for random console things, leaving in for further development, helps get a glimpse into how the api works
     };
