@@ -144,3 +144,12 @@ cite{
     padding:.5rem 1rem;
 	padding-left: 0%;
 }
+.notfound>img{
+	display: flex;
+	width: 100vw;
+}
+.notfound{
+	font-size: xx-large;
+	font-weight: 500;
+	color: white;
+}

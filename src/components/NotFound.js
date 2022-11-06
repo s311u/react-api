@@ -1,8 +1,9 @@
 import React from 'react';
 export default function NotFound() {
     return(
-     <div>
-        This is 404 page
-     </div >
+     <div id="notfound">
+        <img src="public/404img.jpeg"/>
+        <h2>404 page not found</h2>
+     </div>
      )
      }
