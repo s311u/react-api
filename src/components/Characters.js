@@ -1,30 +1,53 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 export default function Characters() {
+    const [charname, setChar2] = useState(0);
+  const [quote2, setQuote2] = useState(0);
 
   useEffect(() => {
-    const [char, setChar] = useState(0);
     const login = {
       'Accept': 'application/json',
       'Authorization': 'Bearer Br1a0Wv6fVW0Rq9xDuiM'
     }
-    const getChar = async () => {
-      const apiChars = await fetch('https://the-one-api.dev/v2/character', {
-        headers: login
-      })
-      const characters = await apiChars.json();
-      char=[];
-      for (let i = 0; i < char.docs.length; i++) {
-        char[i]=characters.name;
+    function getInputValue() {
+        let inputVal = document.getElementById("inputId").value;
+        alert(inputVal);
+    }
+    const getQuote2 = async () => {
+        //let vari = "Frodo Bag"; //not implemented into webpage yet but functionality is ready
+        let vari = inputVal; //not implemented into webpage yet but functionality is ready
+          const char1 = await fetch('https://the-one-api.dev/v2/character', { headers : login });
+          const char2 = await char1.json();
+          
+          charname = "";
+          const specialQuoteRaw = await fetch('https://the-one-api.dev/v2/character/' + testId[Math.floor(Math.random() * testId.length)] + '/quote', { headers : login });//5cd99d4bde30eff6ebccfbbe
+          const specialQuote = await specialQuoteRaw.json();
+          const quote2 = specialQuote.docs[Math.floor(Math.random() * specialQuote.docs.length)].dialog/* .docs[Math.floor(Math.random() * specialQuote.docs.length)] */;
+          console.log(quote2);
+        setChar2(charname);
+      let testId=[]
+      for (let i = 0; i < char2.docs.length; i++) {
+          if (char2.docs[i].name.toLowerCase().includes(vari.toLowerCase())) {
+            testId.push(char2.docs[i]._id)
+            console.log(testId)
+            console.log(char2.docs[i].name)
+          } 
       }
-      return char;
+      console.log(quote2);
+      setQuote2(quote2);
+      //sorry for random console things, leaving in for further development, helps get a glimpse into how the api works
     };
-    getChar();
+    getQuote2();
   }, []);
     return(
      <div>
-        These are the available characters:
-        {char}
+        <input type="text" placeholder="Get quote by character name. " id="inputId"></input>
+        <button type="button" onclick="getInputValue();">Get Value</button>
+
+        <div id="quotespes">
+        <blockquote>{quote2}</blockquote>
+      <cite>- {charname}</cite>
+    </div>
      </div >
      )
      }
