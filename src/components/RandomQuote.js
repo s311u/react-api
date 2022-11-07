@@ -20,17 +20,18 @@ const [char, setChar] = useState(0);
       const chars = await apiChar.json();
       const char = chars.docs[0];
       setChar(char.name);
-     let vari = "Boro";
+      let vari = "Frodo"; //not implemented into webpage yet but functionality is ready
       const char1= await fetch('https://the-one-api.dev/v2/character', { headers : login });
       const char2 = await char1.json();
       let testId=""
       for (let i = 0; i < char2.docs.length; i++) {
-          if (char2.docs[i].name.includes(vari.toLowerCase())) {
+          if (char2.docs[i].name.includes(vari)) {
             testId = char2.docs[i]._id 
             console.log(testId)
+            console.log(char2.docs[i].name)
           } 
       }
-      const specialQuoteRaw = await fetch('https://the-one-api.dev/v2/character/5cd99d4bde30eff6ebccfbbe/quote', { headers : login });//5cd99d4bde30eff6ebccfbbe
+      const specialQuoteRaw = await fetch('https://the-one-api.dev/v2/character/5cd99d4bde30eff6ebccfc70/quote', { headers : login });//5cd99d4bde30eff6ebccfbbe
       const specialQuote = await specialQuoteRaw.json();
       console.log(specialQuote.docs)
       const quote2 = specialQuote.docs[Math.floor(Math.random() * specialQuote.docs.length)]/* .docs[Math.floor(Math.random() * specialQuote.docs.length)] */;
