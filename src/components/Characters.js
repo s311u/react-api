@@ -37,8 +37,8 @@ export default function Characters() {
     //getQuote2();
     return(
      <div>
-         <p> input character name to get quote by them</p>
-        <input type="text" value={input} placeholder="Get quote by character name. " id="inputId" onChange={e => setInput(e.target.value)}></input>
+         <p> input letters to get character name</p>
+        <input type="text" value={input} placeholder="Get character name. " id="inputId" onChange={e => setInput(e.target.value)}></input>
         <button type="button" onClick={getQuote2}></button>
             <div id="quotespes">
         <blockquote>{quote2}</blockquote>
