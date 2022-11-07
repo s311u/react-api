@@ -34,12 +34,12 @@ export default function Characters() {
       setQuote2(quote2);
       //sorry for random console things, leaving in for further development, helps get a glimpse into how the api works
     };
-    getQuote2();
+    //getQuote2();
     return(
      <div>
          <p> input character name to get quote by them</p>
         <input type="text" value={input} placeholder="Get quote by character name. " id="inputId" onChange={e => setInput(e.target.value)}></input>
-        {/* <button type="button" onClick={getInput}></button> */}
+        <button type="button" onClick={getQuote2}></button>
             <div id="quotespes">
         <blockquote>{quote2}</blockquote>
         <cite>- {charname}</cite>
